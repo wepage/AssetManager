@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import AssetForm
 
 
 # Create your views here.
@@ -9,7 +10,15 @@ def list(request):
 
 
 def create(request):
-    pass
+    if request.method == 'POST':
+        form = AssetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('assets_list')
+        ##todo handle error ?
+    # get request return template ?
+    form = AssetForm
+    return render(request, 'form_asset.html', {'form': form})
 
 
 def manage(request):
