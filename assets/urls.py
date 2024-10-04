@@ -18,5 +18,7 @@ from . import views
 
 urlpatterns = [
     path('', views.list, name="assets_list"),
-    path('create', views.create, name='create_asset')
+    path('create', views.create, name='create_asset'),
+    path('manage', views.manage, name='manage_asset'),
+    path('manage/<int:asset_id>', views.manage, name='manage_asset')
 ]
