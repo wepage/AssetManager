@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import AssetForm
+from .models import Asset
 
 
 # Create your views here.
 
 def list(request):
     # list all assets
-    return render(request, template_name='list_assets.html')
+    assets = Asset.objects.all()
+    print(assets)
+    return render(request, 'list_assets.html', {'data': assets})
 
 
 def create(request):
