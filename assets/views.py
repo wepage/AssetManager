@@ -41,7 +41,3 @@ def manage(request, asset_id=None):
             return redirect('assets_list')
         ##todo nevalidna forma ?
     return render(request, 'form_asset.html', {'form': form})
-
-    # reuse the form for creating assset - AssetForm,
-    # the idea is when i pass id of asse to preload it the form to be edited ?
-    return render(request, 'form_asset.html', {'form': form})
