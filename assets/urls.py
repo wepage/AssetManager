@@ -17,8 +17,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.list, name="assets_list"),
-    path('create', views.create, name='create_asset'),
-    path('manage', views.manage, name='manage_asset'),
-    path('manage/<int:asset_id>', views.manage, name='manage_asset')
+    path('', views.AssetManager.as_view(), name='asset_manager'),
+    path('create', views.create.as_view(), name='asset_create'),
+    path('edit/<int:pk>', views.edit.as_view(), name='asset_edit'),
+    # path('', views.list, name="assets_list"),
+    # path('create', views.create, name='create_asset'),
+    # path('manage', views.manage, name='manage_asset'),
+    # path('manage/<int:asset_id>', views.manage, name='manage_asset')
 ]
