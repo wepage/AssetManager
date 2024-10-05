@@ -28,9 +28,11 @@ def manage(request, asset_id=None):
     if asset_id:  ## poppylva formata
         #asset = Asset.objects.filter(id=asset_id)
         asset = get_object_or_404(Asset, id=asset_id)
+        view_name = "Manage asset"
         #form = AssetForm(instance=asset)
     else:
-        asset = None;
+        asset = None
+        view_name = "Create asset"
        # form = AssetForm()  ## prazna forma
     form = AssetForm(instance=asset)
     ## handle form submit
@@ -40,4 +42,4 @@ def manage(request, asset_id=None):
             form.save()
             return redirect('assets_list')
         ##todo nevalidna forma ?
-    return render(request, 'form_asset.html', {'form': form})
+    return render(request, 'form_asset.html', {'view_name': view_name,'form': form})

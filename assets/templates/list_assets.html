@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
- list asssets here ?
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Pricing</h1>
+  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+</div>
+
 {% for asset in data %}
  <p>{{asset.name}} status: {{asset.status}}</p>
 {% endfor %}
-</body>
-</html>
+{% endblock %}
+
+C:\Users\branko\PycharmProjects\AssetManager\assetManager\templates\base.html
+C:\Users\branko\PycharmProjects\AssetManager\assetManager\assets\templates\assetManager\base.html (Source does not exist)
