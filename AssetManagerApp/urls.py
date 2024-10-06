@@ -22,4 +22,5 @@ urlpatterns = [
     path('assets/', include('assets.urls')),
     path('users/', include('users.urls')),
     path('', include('custom_auth.urls')),
+    path('', include('user_assets.urls'))
 ]
