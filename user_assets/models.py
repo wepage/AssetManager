@@ -6,8 +6,8 @@ from users.models import CustomUser
 
 
 class UserAsset(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_assets')
-    asset = models.ForeignKey(Asset, on_delete=models.CASCADE, related_name='asset_users')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='assets')
+    asset = models.ForeignKey(Asset, on_delete=models.CASCADE, related_name='owner')
     assigned_date = models.DateField()
 
     def __str__(self):

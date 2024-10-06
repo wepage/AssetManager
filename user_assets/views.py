@@ -1,12 +1,16 @@
+from django.db import connection
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib import messages  # Import the messages framework
 from django.views.generic import CreateView
 
-from .models import Asset, UserAsset
+from .models import UserAsset
+from assets.models import Asset
 from users.models import CustomUser
 from .forms import UserAssetForm
+
+
 
 
 class AssignAssetsView(CreateView):
@@ -22,6 +26,7 @@ class AssignAssetsView(CreateView):
         return context
 
     def form_valid(self, form):
+        ##
         user_id = self.kwargs['user_id']
         user = get_object_or_404(CustomUser, id=user_id)
         asset = form.cleaned_data['asset']
@@ -36,6 +41,20 @@ class AssignAssetsView(CreateView):
             asset=asset,
             assigned_date=assigned_date,
             )
+
+        print(user.id)
+        print(f"debug: {user_asset.user} // {user_asset.asset} // {user_asset.assigned_date}")
+        # user_asset = UserAsset(
+        #     user=user,
+        #     asset=asset,
+        #     assigned_date=assigned_date,
+        #     )
+        user_asset = UserAsset.objects.create(
+            user=user,
+            asset=asset,
+            assigned_date=assigned_date
+        )
+        print(connection.queries[-1])  # Print the last query executed
         print(f'debug new relation: {user_asset}')
         try:
             user_asset.save()

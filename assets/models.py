@@ -11,4 +11,5 @@ class Asset(models.Model):
     name = models.CharField(max_length=255)
     status = models.BooleanField(default=True)
     group = models.CharField(max_length=10, choices=asset_group_choices, default='Other')
-
+    def __str__(self):
+        return f"{self.name} group {self.group}"
