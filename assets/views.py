@@ -36,11 +36,11 @@ class edit(UpdateView):
 class AssetManager(ListView):
     model = Asset
     template_name = 'manager_assets.html'
-    paginate_by = 10
+    paginate_by = 5
     ordering = ['-id']
     context_object_name = 'assets'
 
-
+    #override for the search
     def get_queryset(self):
         name = self.request.GET.get('name', None)  # string ?
         if name is not None:
@@ -48,8 +48,9 @@ class AssetManager(ListView):
             return Asset.objects.filter(name__icontains=name)
         return Asset.objects.all()  # return all
 
+    ## return custom variables to template
     def get_context_data(self, **kwargs):
-        ## return custom variables to template
+
         context = super().get_context_data(**kwargs)
         ## kato na symfony
         context['view_name'] = 'Asset manager'
