@@ -20,6 +20,7 @@ urlpatterns = [
     path('', views.AssetManager.as_view(), name='asset_manager'),
     path('create', views.create.as_view(), name='asset_create'),
     path('edit/<int:pk>', views.edit.as_view(), name='asset_edit'),
+    path('view/<int:pk>', views.view.as_view(), name="asset_view"),
     # path('', views.list, name="assets_list"),
     # path('create', views.create, name='create_asset'),
     # path('manage', views.manage, name='manage_asset'),

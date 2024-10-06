@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">{{ view_name }}</h1>
+  <p class="lead">{{ view_description }} </p>
+</div>
+
+<!--<form method="get">
+    <div class="form-group row">
+        <div class="col-6">
+            <input type="text" name="name" class="form-control" placeholder="Search for asset" value="{{ request.GET.name }}">
+        </div>
+        <div class="col-3">
+                <button type="submit" class="btn btn-secondary btn-block">Search</button>
+        </div>
+        <div class="col-3">
+            <a href="#"  class="btn btn-success btn-block">++ create new</a>
+        </div>
+    </div>
+</form>-->
+
+<div class="row">
+    <div class="col">
+<h1>User Detail</h1>
+<p>name: {{ asset.name }}</p>
+<p>group: {{ user.group }}</p>
+    </div>
+    <div class="col">
+        <a href="#" class="btn btn-warning">edit</a>
+    </div>
+        <div class="col">
+        <a href="#" class="btn btn-success">assign to user</a>
+    </div>
+</div>
+
+{% include 'pagination_control.html' %}
+
+{% endblock %}

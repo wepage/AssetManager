@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 from .forms import AssetForm
 from .models import Asset
@@ -32,6 +32,20 @@ class edit(UpdateView):
         context['view_name'] = 'Edit existing asset'
         context['view_description'] = 'edit existing asset'
         return context
+
+
+class view(DetailView):
+    model = Asset
+    template_name = 'asset_detail_view.html'
+    context_object_name = 'asset'  # Optional, to specify the context name for the object
+    def get_context_data(self, **kwargs):
+        ## return custom variables to template
+        context = super().get_context_data(**kwargs)
+        ## kato na symfony
+        context['view_name'] = 'Details of asset'
+        context['view_description'] = 'Details of asset'
+        return context
+
 
 class AssetManager(ListView):
     model = Asset

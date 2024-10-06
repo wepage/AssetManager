@@ -5,4 +5,5 @@ from .models import Asset
 class AssetForm(forms.ModelForm):
     class Meta:
         model = Asset
-        fields = ['name', 'status']
+       # fields = ['name', 'status']
+        fields = "__all__"
