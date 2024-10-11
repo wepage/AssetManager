@@ -23,8 +23,8 @@ class AppUserLogin(LoginView):
 
     # Override the form_valid method to bypass authentication and manually log in the user
     def form_valid(self, form):
-        username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
+        username = form.cleaned_data.get('username')
         ##
         user = authenticate(self.request, username=username, password=password)
         if user is None:
@@ -35,7 +35,7 @@ class AppUserLogin(LoginView):
             return HttpResponseRedirect(reverse_lazy('complete_account'))
         if user.is_active is False:
             print("account is not active ?")
-            return HttpResponseRedirect(reverse_lazy('active-account'))
+            return HttpResponseRedirect(reverse_lazy('activate-account'))
 
         ## everything is ok with user account - login and redirect
         print(f"[debug] loggin user found- {user} / {type(user)}")
